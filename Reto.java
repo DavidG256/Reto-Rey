@@ -119,6 +119,9 @@ public class Reto {
 
         public static String movimientoRey (String posicion) {
             if (colorPieza(). equals("B")){
+                char columna = posicion.charAt(0);
+                int fila = Character.getNumericValue(posicion.charAt(1));
+                while (posicion ==  )
 
             } else if (colorPieza().equals("N"))
 
