@@ -1,0 +1,50 @@
+import java.util.Scanner;
+
+public class MovimientosRey {
+    public static void main(String[] args) {
+        Scanner scanner = new Scanner(System.in);
+        
+        
+        int tamañoTablero = 8;
+
+        
+        System.out.println("Introduce la fila del rey (1-8): ");
+        int filaRey = scanner.nextInt();
+        System.out.println("Introduce la columna del rey (1-8): ");
+        int columnaRey = scanner.nextInt();
+
+        
+        filaRey--;
+        columnaRey--;
+
+      
+        if (filaRey < 0 || filaRey >= tamañoTablero || columnaRey < 0 || columnaRey >= tamañoTablero) {
+            System.out.println("Posición fuera del tablero.");
+            return;
+        }
+
+        System.out.println("Los movimientos posibles del rey son:");
+
+        
+        for (int i = -1; i <= 1; i++) { 
+            for (int j = -1; j <= 1; j++) { 
+              
+                if (i == 0 && j == 0) {
+                    continue;
+                }
+
+                
+                int nuevaFila = filaRey + i;
+                int nuevaColumna = columnaRey + j;
+
+               
+                if (nuevaFila >= 0 && nuevaFila < tamañoTablero && nuevaColumna >= 0 && nuevaColumna < tamañoTablero) {
+                   
+                    System.out.println("Fila: " + (nuevaFila + 1) + ", Columna: " + (nuevaColumna + 1));
+                }
+            }
+        }
+
+        scanner.close();
+    }
+}
