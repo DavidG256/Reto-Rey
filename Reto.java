@@ -121,7 +121,14 @@ public class Reto {
             if (colorPieza(). equals("B")){
                 char columna = posicion.charAt(0);
                 int fila = Character.getNumericValue(posicion.charAt(1));
-                while (posicion ==  )
+                for (int i = 0; i < 8; i++) {
+                    char nuevaColumna = (char) (columna + cambiosColumna[i]);
+                    int nuevaFila = fila + cambiosFila[i];
+
+                    if (nuevaColumna >= 'a' && nuevaColumna <= 'h' && nuevaFila >= 1 && nuevaFila <= 8) {
+                        movimientos.append(nuevaColumna).append(nuevaFila).append(" ");
+                    }
+                }
 
             } else if (colorPieza().equals("N"))
 
