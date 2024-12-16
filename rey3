@@ -1,0 +1,39 @@
+public static String movimientoRey(String posicion, String colorPieza) {
+    // Cambios en las coordenadas del rey para las 8 direcciones posibles
+    int[] cambiosFila = {-1, -1, -1, 0, 0, 1, 1, 1};
+    int[] cambiosColumna = {-1, 0, 1, -1, 1, -1, 0, 1};
+
+    // Tablero simulado (para verificar piezas propias y enemigos)
+    char[][] tablero = new char[8][8]; // Aquí se podría inicializar con piezas
+
+    String movimientos = "";
+
+    char columna = posicion.charAt(0); // Ejemplo: 'e'
+    int fila = Character.getNumericValue(posicion.charAt(1)); // Ejemplo: 4
+
+    // Recorremos las 8 direcciones posibles
+    for (int i = 0; i < 8; i++) {
+        char nuevaColumna = (char) (columna + cambiosColumna[i]);
+        int nuevaFila = fila + cambiosFila[i];
+
+        // Verificar si está dentro del tablero
+        if (nuevaColumna >= 'a' && nuevaColumna <= 'h' && nuevaFila >= 1 && nuevaFila <= 8) {
+            // Convertimos las coordenadas a índices para el array del tablero
+            int indiceColumna = nuevaColumna - 'a';
+            int indiceFila = 8 - nuevaFila; // Invertido porque en un array el 0,0 es la esquina superior izquierda
+
+            // Verificamos si hay una pieza propia (simulamos piezas propias con 'B' o 'N')
+            if (tablero[indiceFila][indiceColumna] == 'B' && colorPieza.equals("B")) {
+                continue; // Saltamos si es una pieza propia
+            }
+            if (tablero[indiceFila][indiceColumna] == 'N' && colorPieza.equals("N")) {
+                continue; // Saltamos si es una pieza propia
+            }
+
+            // Si es una casilla válida (vacía o con pieza enemiga), la agregamos
+            movimientos += nuevaColumna + String.valueOf(nuevaFila) + " ";
+        }
+    }
+
+    return movimientos.trim();
+}
