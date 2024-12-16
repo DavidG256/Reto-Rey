@@ -1,0 +1,26 @@
+public static String movimientoRey(String posicion, String colorPieza) {
+    // Array que define los cambios en las coordenadas del rey
+    int[] cambiosFila = {-1, -1, -1, 0, 0, 1, 1, 1};
+    int[] cambiosColumna = {-1, 0, 1, -1, 1, -1, 0, 1};
+
+    String movimientos = "";
+
+    char columna = posicion.charAt(0); // Ejemplo: 'e'
+    int fila = Character.getNumericValue(posicion.charAt(1)); // Ejemplo: 4
+
+    // Verificamos el color de la pieza (aunque no es relevante para movimientos básicos del rey)
+    if (colorPieza.equals("B") || colorPieza.equals("N")) {
+        // Generamos los movimientos posibles
+        for (int i = 0; i < 8; i++) {
+            char nuevaColumna = (char) (columna + cambiosColumna[i]);
+            int nuevaFila = fila + cambiosFila[i];
+
+            // Verificamos si la nueva posición está dentro del tablero
+            if (nuevaColumna >= 'a' && nuevaColumna <= 'h' && nuevaFila >= 1 && nuevaFila <= 8) {
+                movimientos += nuevaColumna + String.valueOf(nuevaFila) + " ";
+            }
+        }
+    }
+
+    return movimientos.trim();
+}
